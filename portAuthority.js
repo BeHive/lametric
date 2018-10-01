@@ -54,7 +54,7 @@ module.exports = {
 
                             index++;
 
-                            let time = elm['pt'][0],
+                            let time = elm['pt'][0] === "&nbsp;" ? "" : elm['pt'][0],
                                 units = elm['pu'][0],
                                 bus = elm['rn'][0],
                                 destination = elm['fd'][0],

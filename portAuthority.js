@@ -9,7 +9,7 @@ module.exports = {
 
         let url = endpoint + stopNr;
 
-        if(stopNr){
+        if(!stopNr){
             let payload = {
                 frames: [
                     {

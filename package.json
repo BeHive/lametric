@@ -1,10 +1,10 @@
 {
-  "name": "pittsburgh_port_authority_time_checker",
+  "name": "lametric_server",
   "version": "0.0.1",
-  "description": "an app to display the data from the Pittsburgh Port Authority True Time site.  Users enters a stop number and the display will show the time to the next bus when the button is pressed",
+  "description": "lametric collection of backends for a series of apps",
   "main": "main.js",
   "scripts": {
-    "start": "node main.js"
+    "start": "node lametric.js"
   },
   "author": "",
   "license": "ISC",

@@ -1,0 +1,16 @@
+{
+  "name": "pittsburgh_port_authority_time_checker",
+  "version": "0.0.1",
+  "description": "an app to display the data from the Pittsburgh Port Authority True Time site.  Users enters a stop number and the display will show the time to the next bus when the button is pressed",
+  "main": "main.js",
+  "scripts": {
+    "start": "node main.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.16.3",
+    "request": "^2.88.0",
+    "xml2js": "^0.4.19"
+  }
+}

@@ -1,6 +1,6 @@
 {
   "name": "lametric_server",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "lametric collection of backends for a series of apps",
   "main": "main.js",
   "scripts": {
@@ -10,6 +10,7 @@
   "license": "ISC",
   "dependencies": {
     "express": "^4.16.3",
+    "jsdom": "^12.1.0",
     "request": "^2.88.0",
     "xml2js": "^0.4.19"
   }

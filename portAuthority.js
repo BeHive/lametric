@@ -4,6 +4,9 @@ const parseString = require('xml2js').parseString;
 
 module.exports = {
     process: function (req, res) {
+
+        console.log(`got request for stop ${req.query.stopnr}`);
+
         let endpoint = 'http://truetime.portauthority.org/bustime/eta/getStopPredictionsETA.jsp?route=all&stop=Port%20Authority%20Bus:';
         let stopNr = req.query.stopnr;
 

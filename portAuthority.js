@@ -9,53 +9,67 @@ module.exports = {
 
         let url = endpoint + stopNr;
 
-        http.get(url, (resp) => {
-            let data = '';
+        if(stopNr){
+            let payload = {
+                frames: [
+                    {
+                        "text": "Port Authority",
+                        "icon": "a22948",
+                        "index": 0
+                    }
+                ]
+            };
 
-            resp.on('data', (chunk) => {
-                data += chunk;
-            });
+            res.send(payload);
+        }
+        else {
+            http.get(url, (resp) => {
+                let data = '';
 
-            // The whole response has been received. Print out the result.
-            resp.on('end', () => {
-                parseString(data, function (err, result) {
-                    let stop = result.stop;
+                resp.on('data', (chunk) => {
+                    data += chunk;
+                });
 
-                    let index = 0;
+                // The whole response has been received. Print out the result.
+                resp.on('end', () => {
+                    parseString(data, function (err, result) {
+                        let stop = result.stop;
 
-                    let payload = {
-                        frames: [
-                            {
-                                "text": "Port Authority",
-                                "icon": "a22948",
-                                "index": index
-                            }
-                        ]
-                    };
+                        let index = 0;
 
-                    stop['pre'].forEach((elm) => {
+                        let payload = {
+                            frames: [
+                                {
+                                    "text": "Port Authority",
+                                    "icon": "a22948",
+                                    "index": index
+                                }
+                            ]
+                        };
 
-                        index++;
+                        stop['pre'].forEach((elm) => {
 
-                        let time = elm['pt'][0],
-                            units = elm['pu'][0],
-                            bus = elm['rn'][0],
-                            destination = elm['fd'][0],
-                            fullLine = `#${bus} to ${destination}: ${time} ${units}`;
+                            index++;
 
-                        payload.frames.push({text: fullLine, index: index});
+                            let time = elm['pt'][0],
+                                units = elm['pu'][0],
+                                bus = elm['rn'][0],
+                                destination = elm['fd'][0],
+                                fullLine = `#${bus} to ${destination}: ${time} ${units}`;
+
+                            payload.frames.push({text: fullLine, index: index});
+
+                        });
+
+                        res.send(payload);
 
                     });
 
-                    res.send(payload);
-
                 });
 
+            }).on("error", (err) => {
+                console.log("Error: " + err.message);
             });
-
-        }).on("error", (err) => {
-            console.log("Error: " + err.message);
-        });
-
+        }
     }
 };
